@@ -5,9 +5,9 @@ from etl_pipeline.extract import extract_from_s3
 from etl_pipeline.transform import transform_data
 from etl_pipeline.load import load_to_postgres
 
-@flow(name="Sales Data ETL Pipeline")
+@flow(name="Linkedin Data ETL Pipeline")
 def etl_pipeline(bucket_name: str, file_key: str, db_connection: str) -> None:
-    '''Main ETL flow to process sales data'''
+    '''Main ETL flow to process linkedin data'''
     logger = get_run_logger()
     logger.info("Starting ETL pipeline")
     

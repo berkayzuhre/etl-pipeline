@@ -1,13 +1,17 @@
 import os
+from dotenv import load_dotenv
 from etl_pipeline.pipeline import etl_pipeline
 
 if __name__ == "__main__":
-    # Get configuration from environment variables or use defaults
-    bucket = os.getenv("S3_BUCKET", "sample-sales-data")
-    file = os.getenv("S3_FILE_KEY", "sales/2023-05-12/transactions.json")
+    # Load environment variables from .env file
+    load_dotenv()   # <-- This line loads the .env file in your current directory.
+
+    # Now get env vars (as you already wrote)
+    bucket = os.getenv("S3_BUCKET")
+    file = os.getenv("S3_FILE_KEY")
     db_conn = os.getenv(
-        "DB_CONNECTION", 
-        "postgresql://postgres:postgres@localhost:5432/sales_db"
+        "DB_CONNECTION",
+        "postgresql://postgres:postgres@localhost:5432/etl_db"
     )
     
     # Run the ETL pipeline
